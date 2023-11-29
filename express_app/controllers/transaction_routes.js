@@ -1,7 +1,7 @@
 // IMPORT DEPENDENCIES
 const express = require("express");
 const Transaction = require("../models/transaction_model");
-const { jwt, secretKey, authenticateToken } = require("../auth");
+const { authenticateToken } = require("../auth");
 
 // CREATE A ROUTER
 const router = express.Router();

@@ -1,3 +1,5 @@
+// IMPORTING DEPENDENCIES
+const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { graphqlHTTP } = require("express-graphql");
@@ -8,6 +10,8 @@ const resolvers = require("./resolvers");
 const { NODE_ENV, PORT } = process.env;
 
 const app = express();
+
+app.use(cors());
 
 // HANDLEBARS THE VIEW TEMPLATE ENGINE
 app.set("view engine", "hbs");
