@@ -1,3 +1,8 @@
+// IMPORT CSS AND JAVASCRIPT
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@/assets/main.css';
+import 'bootstrap/dist/js/bootstrap.min';
+
 // create an ApolloClient instance:
 
 // Create the Apollo client
@@ -27,6 +32,6 @@ const app = createApp({
 });
 
 app.use(apolloProvider);
-app.use(router); //
+app.use(router);
 
 app.mount("#app");

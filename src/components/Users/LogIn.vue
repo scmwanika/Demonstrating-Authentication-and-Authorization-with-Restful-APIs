@@ -1,73 +1,34 @@
 <template>
-    <section class="section">
-     <div class="columns">
-       <div class="column is-4 is-offset-4">
- 
-         <h2 class="title has-text-centered">Login</h2>
- 
-         <form method="POST" @submit.prevent="login">
-           <div class="field">
-             <label class="label">E-Mail Address</label>
- 
-             <p class="control">
-               <input
-                 type="email"
-                 class="input"
-                 v-model="email"
-               />
-             </p>
-           </div>
- 
-           <div class="field">
-             <label class="label">Password</label>
- 
-             <p class="control">
-               <input
-                 type="password"
-                 class="input"
-                 v-model="password"
-               />
-             </p>
-           </div>
- 
-           <p class="control">
-             <button class="button is-primary is-fullwidth is-uppercase">Login</button>
-           </p>
-         </form>
-       </div>
-     </div>
-    </section>
- </template>
- 
- <script>
- import { LOGIN_MUTATION } from '@/graphql'
- 
- export default {
-   name: 'LogIn',
-   data () {
-     return {
-       email: '',
-       password: ''
-     }
-   },
-   methods: {
-     login () {
-       this.$apollo
-         .mutate({
-           mutation: LOGIN_MUTATION,
-           variables: {
-             email: this.email,
-             password: this.password
-           }
-         })
-         .then(response => {
-           // save user token to localstorage
-           localStorage.setItem('blog-app-token', response.data.login)
- 
-           // redirect user
-           this.$router.replace('/admin/posts')
-         })
-     }
-   }
- }
- </script>
+  <div class="content">
+    <div class="flex-container">
+      <!-- LOGIN -->
+      <form @submit="login()">
+        <fieldset>
+          <legend>LOGIN</legend>
+          <br />
+          <label>Email:</label><br />
+          <input type="email" v-model="email" required /><br />
+          <label>Password: </label><br />
+          <input type="password" v-model="password" /><br />
+          <button class="btn btn-success" type="submit">Login</button>
+          <a style="float: right; font-weight: bold" href="/signup">SignUp </a>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+//import { LOGIN_MUTATION } from "@/graphql";
+
+export default {
+  name: "LogIn",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {},
+};
+</script>

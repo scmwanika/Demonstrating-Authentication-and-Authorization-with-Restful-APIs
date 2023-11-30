@@ -1,37 +1,39 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-3"></div>
-        <div class="column is-9">
-          <h2 class="title">Users</h2>
-
-          <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="user in getUsers" :key="user.id">
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>
-                  <RouterLink :to="{ name: 'EditUser', params: { id: user.id } }">Edit</RouterLink>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="content">
+    <legend>USERS</legend>
+    <table class="table is-striped is-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>CreatedAt</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in getUsers" :key="user.id">
+          <td>{{ user.role }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.createdAt }}</td>
+          <td style="font-weight: bold">
+            <RouterLink :to="{ name: 'EditUser', params: { id: user.id } }"
+              >Edit</RouterLink
+            >
+            |
+            <a href="" style="color: red" @click="deleteUser(user.id)"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
-import { ALL_USERS_QUERY } from "@/graphql";
+import { ALL_USERS_QUERY, DELETE_USER_MUTATION } from "@/graphql";
 
 export default {
   name: "ListUsers",
@@ -41,10 +43,25 @@ export default {
     };
   },
   apollo: {
-    // get all users
+    // GET ALL USERS
     getUsers: {
       query: ALL_USERS_QUERY,
     },
   },
+  // DELETE USER
+  // methods: {
+  //   deleteUser() {
+  //     this.$apollo.mutate({
+  //       mutation: DELETE_USER_MUTATION,
+  //       variables: {
+  //         role: this.role,
+  //         name: this.name,
+  //         email: this.email,
+  //         password: this.password,
+  //         createdAt: this.createdAt,
+  //       },
+  //     });
+  //   },
+  // },
 };
 </script>

@@ -36,7 +36,7 @@ legend {
 }
 input[type="text"],
 input[type="email"],
-input[type="url"],
+input[type="password"],
 textarea,
 select {
   width: 318px;
@@ -46,7 +46,6 @@ select {
   font-style: italic;
   border: 1px solid grey;
   color: grey;
-  background-color: #000000;
 }
 .product {
   display: none;

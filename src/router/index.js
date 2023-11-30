@@ -14,7 +14,7 @@ const router = createRouter({
       component: SignUp,
     },
     {
-      path: '/login',
+      path: '/',
       name: 'LogIn',
       component: LogIn,
     },
@@ -27,7 +27,7 @@ const router = createRouter({
       path: '/users/:id',
       name: 'EditUser',
       component: EditUser,
-      props: true,
+      //props: true,
     },
   ],
 });

@@ -1,40 +1,24 @@
 <template>
-  <section class="section">
-    <div class="columns">
-      <div class="column is-4 is-offset-4">
-        <h2 class="title has-text-centered">Signup</h2>
-
-        <form @submit.prevent="signup()">
-          <div class="field">
-            <label class="label">Name</label>
-            <p class="control">
-              <input type="text" class="input" v-model="name" />
-            </p>
-          </div>
-
-          <div class="field">
-            <label class="label">Email</label>
-            <p class="control">
-              <input type="email" class="input" v-model="email" />
-            </p>
-          </div>
-
-          <div class="field">
-            <label class="label">Password</label>
-            <p class="control">
-              <input type="password" class="input" v-model="password" />
-            </p>
-          </div>
-
-          <p class="control">
-            <button class="button is-primary is-fullwidth is-uppercase">
-              SignUp
-            </button>
-          </p>
-        </form>
-      </div>
+  <div class="content">
+    <div class="flex-container">
+      <!-- SIGN UP -->
+      <form @submit="signup()">
+        <fieldset>
+          <legend>SIGN UP</legend>
+          <br />
+          <label>Role:</label><br />
+          <input type="text" v-model="role" required /><br />
+          <label>Name:</label><br />
+          <input type="text" v-model="name" required /><br />
+          <label>Email:</label><br />
+          <input type="email" v-model="email" required /><br />
+          <label>Password: </label><br />
+          <input type="password" v-model="password" /><br />
+          <button class="btn btn-success" type="submit">SignUp</button>
+        </fieldset>
+      </form>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -63,10 +47,6 @@ export default {
           createdAt: this.createdAt,
         },
       });
-      // .then((response) => {
-      //   // redirect to login page
-      //   this.$router.replace("/login");
-      // });
     },
   },
 };

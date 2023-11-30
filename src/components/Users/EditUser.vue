@@ -1,56 +1,45 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-3"></div>
-        <div class="column is-9">
-          <h2 class="title">Edit User</h2>
-
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Name</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control">
-                  <input class="input is-static" v-model="getuser.name" />
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Email</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control">
-                  <input class="input is-static" v-model="getuser.email" />
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="content">
+    <div class="flex-container">
+      <!-- EDIT USER -->
+      <form @submit="updateUser()">
+        <fieldset>
+          <legend>EDIT USER</legend>
+          <br />
+          <label>Role:</label><br />
+          <input type="text" v-model="getUser.role" required /><br />
+          <label>Name:</label><br />
+          <input type="text" v-model="getUser.name" required /><br />
+          <label>Email:</label><br />
+          <input type="email" v-model="getUser.email" required /><br />
+          <label>Password: </label><br />
+          <input type="password" v-model="getUser.password" /><br />
+          <button class="btn btn-success" type="submit">Update</button>
+        </fieldset>
+      </form>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import { USER_QUERY } from "@/graphql";
+import { USER_QUERY, UPDATE_USER_MUTATION } from "@/graphql";
 
 export default {
   name: "EditUser",
   data() {
     return {
-      getuser: {},
+      getUser: {},
       id: this.$route.params.id,
+      role: "",
+      name: "",
+      email: "",
+      password: "",
+      createdAt: "",
     };
   },
   apollo: {
     // get user by ID
-    getuser: {
+    getUser: {
       query: USER_QUERY,
       variables() {
         return {
@@ -59,5 +48,20 @@ export default {
       },
     },
   },
+  // UPDATE USER
+  // methods: {
+  //   updateUser() {
+  //     this.$apollo.mutate({
+  //       mutation: UPDATE_USER_MUTATION,
+  //       variables: {
+  //         role: this.role,
+  //         name: this.name,
+  //         email: this.email,
+  //         password: this.password,
+  //         createdAt: this.createdAt,
+  //       },
+  //     });
+  //   },
+  // },
 };
 </script>

@@ -1,8 +1,10 @@
 import gql from "graphql-tag";
 
-// CREATE USER
+// LOGIN USER
+
+// SIGNUP USER
 export const SIGNUP_MUTATION = gql`
-  mutation SignupMutation(
+  mutation (
     $role: String!
     $name: String!
     $email: String!
@@ -25,13 +27,6 @@ export const SIGNUP_MUTATION = gql`
   }
 `;
 
-// LOGIN
-export const LOGIN_MUTATION = gql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password)
-  }
-`;
-
 // GET ALL USERS
 export const ALL_USERS_QUERY = gql`
   query {
@@ -48,8 +43,47 @@ export const ALL_USERS_QUERY = gql`
 
 // GET USER BY ID
 export const USER_QUERY = gql`
-  query {
-    getUser {
+  query ($id: ID!) {
+    getUser(id: $id) {
+      id
+      role
+      name
+      email
+      password
+      createdAt
+    }
+  }
+`;
+
+// UPDATE USER
+export const UPDATE_USER_MUTATION = gql`
+  mutation (
+    $role: String!
+    $name: String!
+    $email: String!
+    $password: String!
+    $createdAt: String!
+  ) {
+    updateUser(
+      role: $role
+      name: $name
+      email: $email
+      password: $password
+      createdAt: $createdAt
+    ) {
+      role
+      name
+      email
+      password
+      createdAt
+    }
+  }
+`;
+
+// DELETE USER
+export const DELETE_USER_MUTATION = gql`
+  mutation ($id: ID!) {
+    deleteUser(id: $id) {
       id
       role
       name

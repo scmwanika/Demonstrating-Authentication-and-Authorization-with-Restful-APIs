@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const { buildSchema } = require("graphql");
 
 const schema = buildSchema(`
