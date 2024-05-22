@@ -1,3 +1,1 @@
-# Implementing Web Services APIs Authentication and Authorization
-### RESTful APIs
-### GraphQL APIs
+# Demonstrating Authentication and Authorization with Restful APIs
